@@ -1,0 +1,13 @@
+dist
+node_modules
+public
+.husky
+.vscode
+.idea
+*.sh
+*.md
+
+package-lock.json
+apps/**/dist/*
+packages/**/dist/*
+internal/*/**/dist
