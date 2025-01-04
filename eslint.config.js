@@ -135,7 +135,7 @@ export default [
 			'max-params': [1, 3], // 函数参数最大数量为 3
 			'arrow-parens': ['error', 'as-needed', { requireForBlockBody: false }], // 要求箭头函数的参数使用圆括号
 			// 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
-			'vue/multi-word-component-names': 'off',
+			// 'vue/multi-word-component-names': 'off',
 			// 'vue/multi-word-component-names': [
 			// 	'error',
 			// 	{
@@ -147,9 +147,9 @@ export default [
 				'error',
 				{
 					cases: {
-						kebabCase: false,
+						kebabCase: false, // test-home
 						camelCase: false,
-						pascalCase: true,
+						pascalCase: true, // TestHome
 						snakeCase: false
 					},
 					ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
