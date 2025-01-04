@@ -20,7 +20,10 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style lang="scss" scoped>
-.logo { display: block;margin: 0 auto 2rem;}
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
 
 .nav {
   width: 100%;
