@@ -131,13 +131,14 @@ export default [
 			'prefer-template': 1, // 建议使用模板字符串
 			'no-duplicate-imports': 2, // 禁止重复导入
 			'max-params': [1, 3], // 函数参数最大数量为 3
-			// 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
-			'vue/multi-word-component-names': [
-				'error',
-				{
-					ignores: ['index', 'Layout', 'Login', '403', '404', '500'] //在这个数组中加入的文件名字需要忽略的组件名
-				}
-      ],
+      // 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
+      'vue/multi-word-component-names':off,
+			// 'vue/multi-word-component-names': [
+			// 	'error',
+			// 	{
+			// 		ignores: ['index', 'Layout', 'Login', '403', '404', '500'] //在这个数组中加入的文件名字需要忽略的组件名
+			// 	}
+      // ],
       'unicorn/better-regex': 'error',
       'unicorn/filename-case': [
       'error',
