@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
-import Test from './components/test-home.vue'
+import test from './components/test-home.vue'
 const count = 1
 console.log(`output->count`, count)
 </script>
