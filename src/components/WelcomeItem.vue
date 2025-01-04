@@ -1,5 +1,5 @@
 <template>
-	<div class="item-page">
+	<div class="item__page">
 		<i>
 			<slot name="icon"></slot>
 		</i>
