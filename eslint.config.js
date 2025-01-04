@@ -4,6 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -40,7 +41,9 @@ export default [
 		'@vue/eslint-config-prettier/skip-formatting'
 	),
 	{
-		// plugins: [],
+    plugins: {
+      unicorn: eslintPluginUnicorn,
+    },
 		languageOptions: {
 			globals: {
 				...globals.node,
@@ -134,7 +137,20 @@ export default [
 				{
 					ignores: ['index', 'Layout', 'Login', '403', '404', '500'] //在这个数组中加入的文件名字需要忽略的组件名
 				}
-			],
+      ],
+      'unicorn/better-regex': 'error',
+      'unicorn/filename-case': [
+      'error',
+      {
+        cases: {
+          kebabCase: false,
+          camelCase: false,
+          pascalCase: true,
+          snakeCase: false
+        },
+        ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
+      }
+    ],
 			// 强制类名命名规范为 item-cell 而不是 item--cell 或 item_cell
 			// 'jsdoc/require-jsdoc': ['error', {
 			//   require: {
