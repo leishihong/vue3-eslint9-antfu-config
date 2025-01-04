@@ -4,7 +4,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -41,9 +41,9 @@ export default [
 		'@vue/eslint-config-prettier/skip-formatting'
 	),
 	{
-    plugins: {
-      unicorn: eslintPluginUnicorn,
-    },
+		plugins: {
+			unicorn: eslintPluginUnicorn
+		},
 		languageOptions: {
 			globals: {
 				...globals.node,
@@ -95,6 +95,8 @@ export default [
 			'vue/max-attributes-per-line': 'off',
 			'vue/multiline-html-element-content-newline': 'off',
 			'vue/singleline-html-element-content-newline': 'off',
+			'vue/component-options-name-casing': 'error', // 强制在components选项中对组件名称进行大小写(PascalCase)
+			'vue/custom-event-name-casing': ['error', 'camelCase'], // 在 Vue 3 中，使用 camelCase 或 kebab-case 作为自定义事件名称不会限制其在 v-on 中的使用。但是，遵循 JavaScript 约定，camelCase 更自然。
 			'vue/attribute-hyphenation': 'off', // 对模板中的自定义组件强制执行属性命名样式
 			'vue/require-default-prop': 'off',
 			'arrow-spacing': [2, { before: true, after: true }], // 箭头间距
@@ -131,27 +133,28 @@ export default [
 			'prefer-template': 1, // 建议使用模板字符串
 			'no-duplicate-imports': 2, // 禁止重复导入
 			'max-params': [1, 3], // 函数参数最大数量为 3
-      // 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
-      'vue/multi-word-component-names':off,
+			'arrow-parens': ['error', 'as-needed', { requireForBlockBody: false }], // 要求箭头函数的参数使用圆括号
+			// 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
+			'vue/multi-word-component-names': 'off',
 			// 'vue/multi-word-component-names': [
 			// 	'error',
 			// 	{
 			// 		ignores: ['index', 'Layout', 'Login', '403', '404', '500'] //在这个数组中加入的文件名字需要忽略的组件名
 			// 	}
-      // ],
-      'unicorn/better-regex': 'error',
-      'unicorn/filename-case': [
-      'error',
-      {
-        cases: {
-          kebabCase: false,
-          camelCase: false,
-          pascalCase: true,
-          snakeCase: false
-        },
-        ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
-      }
-    ],
+			// ],
+			'unicorn/better-regex': 'error',
+			'unicorn/filename-case': [
+				'error',
+				{
+					cases: {
+						kebabCase: false,
+						camelCase: false,
+						pascalCase: true,
+						snakeCase: false
+					},
+					ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
+				}
+			],
 			// 强制类名命名规范为 item-cell 而不是 item--cell 或 item_cell
 			// 'jsdoc/require-jsdoc': ['error', {
 			//   require: {
