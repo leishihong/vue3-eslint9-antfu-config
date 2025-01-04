@@ -1,6 +1,8 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+const count = 1
+console.log(`output->count`, count)
 </script>
 
 <template>
@@ -36,23 +38,21 @@ import HelloWorld from './components/HelloWorld.vue'
   color: var(--color-text);
 }
 
-@media (width >= 1024px) {
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.logo {
+  margin: 0 2rem 0 0;
+}
 
-  .header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.header .wrapper {
+  display: flex;
+  place-items: flex-start;
+  flex-wrap: wrap;
+}
 
-  .nav {
-    margin-top: 1rem;
-    margin-left: -1rem;
-    padding: 1rem 0;
-    font-size: 1rem;
-    text-align: left;
-  }
+.nav {
+  margin-top: 1rem;
+  margin-left: -1rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+  text-align: left;
 }
 </style>

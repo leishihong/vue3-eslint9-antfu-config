@@ -44,7 +44,11 @@ export default [
       globals: {
         ...globals.node,
         ...globals.commonjs,
-        ...globals.browser
+        ...globals.browser,
+        withDefaults: true,
+        defineExpose: true,
+        defineEmits: true,
+        defineProps: true
       },
 
       parser: parser,
@@ -105,6 +109,25 @@ export default [
       'no-ex-assign': 2, // 不允许在catch子句中重新分配例外
       'no-extra-boolean-cast': 2, // 禁止不必要的布尔转换
       'no-return-assign': [2, 'except-parens'], // 消除return陈述中的任务，除非用括号括起来
+      'no-multiple-empty-lines': [2, { max: 1 }], // 连续空行不超过 1 行
+      'no-extra-semi': 2, // 不允许出现多余的分号
+      'key-spacing': [2, { beforeColon: false, afterColon: true }], // 属性名与冒号之间不能有空格，冒号后必须有空格
+      'new-cap': ['error', { newIsCap: true, capIsNew: false }], // 构造函数首字母必须大写
+      'no-else-return': [1, { allowElseIf: false }], // 禁止 else 语句，如果 if 语句中已返回值
+      'no-loop-func': 2, // 禁止在循环中定义函数
+      'no-implicit-coercion': [1, { allow: ['!!'] }], // 禁止隐式类型转换
+      'max-lines-per-function': [
+        1,
+        {
+          max: 50, // 函数最大行数为 50 行
+          skipComments: true, // 跳过注释行
+          skipBlankLines: true, // 跳过空行
+          IIFEs: true // 对立即调用的函数表达式 (IIFE) 应用规则
+        }
+      ],
+      'prefer-template': 1, // 建议使用模板字符串
+      'no-duplicate-imports': 2, // 禁止重复导入
+      'max-params': [1, 3], // 函数参数最大数量为 3
       // 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
       'vue/multi-word-component-names': [
         'error',

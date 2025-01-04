@@ -22,7 +22,7 @@ module.exports = {
     }
   ],
   rules: {
-    'declaration-block-newline-after': 'always',
+    // 'declaration-block-newline-after': 'always',
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'no-duplicate-selectors': null,
