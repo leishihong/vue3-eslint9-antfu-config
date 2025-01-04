@@ -5,38 +5,36 @@ module.exports = {
     'stylelint-config-standard',
     'stylelint-config-rational-order',
     'stylelint-config-prettier',
-    'stylelint-config-concentric-order',
+    'stylelint-config-concentric-order'
   ],
   customSyntax: 'postcss-html', // 配置stylelint less拓展插件
-  plugin: ['stylelint-order', 'stylelint-less', 'stylelint-scss', 'stylelint-prettier'],
+  plugin: ['stylelint-order', 'stylelint-scss', 'stylelint-prettier', 'stylelint-plugin-prettier'],
   ignoreFiles: ['node_modules/**/*'],
   // 指定不同文件对应的解析器
   overrides: [
     {
       files: ['**/*.{vue,html}'],
-      customSyntax: 'postcss-html',
-    },
-    {
-      files: ['**/*.{css,less}'],
-      customSyntax: 'postcss-less',
+      customSyntax: 'postcss-html'
     },
     {
       files: ['**/*.{css,scss}'],
-      customSyntax: 'postcss-scss',
-    },
+      customSyntax: 'postcss-scss'
+    }
   ],
   rules: {
+    'declaration-block-newline-after': 'always',
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'no-duplicate-selectors': null,
     'color-function-notation': null,
     'number-leading-zero': null,
+    'declaration-block-single-line-max-declarations': null,
     //  允许 global 、export 、deep伪类
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['global', 'export', 'deep'],
-      },
+        ignorePseudoClasses: ['global', 'export', 'deep']
+      }
     ],
     'at-rule-no-unknown': null, // 不验证@未知的名字，为了兼容scss的函数
     'keyframes-name-pattern': null,
@@ -198,7 +196,7 @@ module.exports = {
       'page',
       'set-link-source',
       'unicode-bidi',
-      'speak',
-    ],
-  },
+      'speak'
+    ]
+  }
 }
