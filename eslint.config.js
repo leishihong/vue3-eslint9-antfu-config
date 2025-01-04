@@ -147,10 +147,10 @@ export default [
 				'error',
 				{
 					cases: {
-						kebabCase: false, // test-home
-						camelCase: true,
-						pascalCase: false, // TestHome
-						snakeCase: false
+						kebabCase: true, // test-home
+						camelCase: false, //test 必须小写
+						pascalCase: true, // TestHome
+						snakeCase: false // 小写 test、test_view
 					},
 					ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
 				}
