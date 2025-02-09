@@ -88,6 +88,8 @@ export default [
 			'vue/singleline-html-element-content-newline': 'off',
 			'vue/component-options-name-casing': 'error', // 强制在components选项中对组件名称进行大小写(PascalCase)
 			'vue/custom-event-name-casing': ['error', 'camelCase'], // 在 Vue 3 中，使用 camelCase 或 kebab-case 作为自定义事件名称不会限制其在 v-on 中的使用。但是，遵循 JavaScript 约定，camelCase 更自然。
+			// 强制在模板中使用 PascalCase 来引用组件
+			'vue/component-name-in-template-casing': ['error', 'PascalCase'],
 			'vue/attribute-hyphenation': 'off', // 对模板中的自定义组件强制执行属性命名样式
 			'vue/require-default-prop': 'off',
 			'arrow-spacing': [2, { before: true, after: true }], // 箭头间距
