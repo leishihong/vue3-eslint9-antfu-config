@@ -94,7 +94,7 @@ export default [
 			'brace-style': [2, '1tbs', { allowSingleLine: false }], // 大括号样式允许单行
 			'import/no-unresolved': 'error', // 确保导入路径正确
 			'import/named': 'error', // 确保命名导入正确
-			camelcase: [2, { properties: 'always', ignoreImports: false }], //为属性强制执行驼峰命名
+			camelcase: ['error', { properties: 'always', ignoreImports: false }], //为属性强制执行驼峰命名
 			eqeqeq: ['error', 'always', { null: 'ignore' }], // 强制使用全等
 			'no-delete-var': 2, // 不允许在变量上使用delete操作符
 			'no-dupe-args': 2, // 不允许在函数声明或表达式中使用重复的参数名称
