@@ -134,9 +134,6 @@ export default [
 				}
 			],
 
-			// eslint-plugin-eslint-comments
-			'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-
 			// unicorn
 			'unicorn/better-regex': 'error',
 			'unicorn/filename-case': [
