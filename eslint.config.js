@@ -1,10 +1,14 @@
 import globals from 'globals'
-import parser from 'vue-eslint-parser'
+import commonParser from 'vue-eslint-parser'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
+import { fixupPluginRules } from '@eslint/compat'
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import importPlugin from 'eslint-plugin-import'
+import pluginVue from 'eslint-plugin-vue'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -15,37 +19,24 @@ const compat = new FlatCompat({
 })
 
 export default [
-	{
-		ignores: [
-			'**/*.sh',
-			'**/node_modules',
-			'**/*.md',
-			'**/*.woff',
-			'**/*.ttf',
-			'**/.vscode',
-			'**/.idea',
-			'**/dist',
-			'public',
-			'docs',
-			'**/.husky',
-			'**/.local',
-			'**/.eslintrc.cjs',
-			'**/.prettierrc.cjs',
-			'**/.stylelintrc.cjs',
-			'bin'
-		]
-	},
-	...compat.extends(
-		'plugin:vue/vue3-essential',
-		'eslint:recommended',
-		'@vue/eslint-config-prettier/skip-formatting'
-	),
+	// ...compat.extends(
+	// 	'plugin:vue/vue3-essential',
+	// 	'eslint:recommended',
+	// 	'@vue/eslint-config-prettier/skip-formatting'
+	// ),
+	...pluginVue.configs['flat/base'],
+	...pluginVue.configs['flat/essential'],
+	...pluginVue.configs['flat/strongly-recommended'],
+	...pluginVue.configs['flat/recommended'],
+	skipFormatting,
 	{
 		plugins: {
-			unicorn: eslintPluginUnicorn
+			unicorn: eslintPluginUnicorn,
+			import: fixupPluginRules(importPlugin)
 		},
 		languageOptions: {
 			globals: {
+				...globals.es6,
 				...globals.node,
 				...globals.commonjs,
 				...globals.browser,
@@ -55,14 +46,14 @@ export default [
 				defineProps: true
 			},
 
-			parser: parser,
+			parser: commonParser,
 			ecmaVersion: 'latest',
 			sourceType: 'module'
 		},
 		settings: {
 			'import/resolver': {
 				node: {
-					extensions: ['.js', '.jsx', '.ts', '.tsx']
+					extensions: ['.js', '.mjs', '.jsx', '.ts', '.tsx']
 				}
 			}
 		},
@@ -121,6 +112,7 @@ export default [
 			'no-else-return': [1, { allowElseIf: false }], // 禁止 else 语句，如果 if 语句中已返回值
 			'no-loop-func': 2, // 禁止在循环中定义函数
 			'no-implicit-coercion': [1, { allow: ['!!'] }], // 禁止隐式类型转换
+			'no-duplicate-imports': 2, // 禁止重复导入
 			'max-lines-per-function': [
 				1,
 				{
@@ -131,7 +123,6 @@ export default [
 				}
 			],
 			'prefer-template': 1, // 建议使用模板字符串
-			'no-duplicate-imports': 2, // 禁止重复导入
 			'max-params': [1, 3], // 函数参数最大数量为 3
 			'arrow-parens': ['error', 'as-needed', { requireForBlockBody: false }], // 要求箭头函数的参数使用圆括号
 			// 关闭特殊文件名称的校验，组件文件名称需要2个以上的连词，除了index和404以为
@@ -142,6 +133,11 @@ export default [
 					ignores: ['index', 'Layout', 'Login', '403', '404', '500'] //在这个数组中加入的文件名字需要忽略的组件名
 				}
 			],
+
+			// eslint-plugin-eslint-comments
+			'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+
+			// unicorn
 			'unicorn/better-regex': 'error',
 			'unicorn/filename-case': [
 				'error',
@@ -155,6 +151,43 @@ export default [
 					ignore: ['\\.(?:(?:(?:j|t)sx?)|(?:j|t)s)$']
 				}
 			],
+			'unicorn/custom-error-definition': 'error',
+			'unicorn/error-message': 'error',
+			'unicorn/escape-case': 'error',
+			'unicorn/import-index': 'error',
+			'unicorn/new-for-builtins': 'error',
+			'unicorn/no-array-method-this-argument': 'error',
+			'unicorn/no-array-push-push': 'error',
+			'unicorn/no-console-spaces': 'error',
+			'unicorn/no-for-loop': 'error',
+			'unicorn/no-hex-escape': 'error',
+			'unicorn/no-instanceof-array': 'error',
+			'unicorn/no-invalid-remove-event-listener': 'error',
+			'unicorn/no-new-array': 'error',
+			'unicorn/no-new-buffer': 'error',
+			'unicorn/no-unsafe-regex': 'off',
+			'unicorn/number-literal-case': 'error',
+			'unicorn/prefer-array-find': 'error',
+			'unicorn/prefer-array-flat-map': 'error',
+			'unicorn/prefer-array-index-of': 'error',
+			'unicorn/prefer-array-some': 'error',
+			'unicorn/prefer-date-now': 'error',
+			'unicorn/prefer-dom-node-dataset': 'error',
+			'unicorn/prefer-includes': 'error',
+			'unicorn/prefer-keyboard-event-key': 'error',
+			'unicorn/prefer-math-trunc': 'error',
+			'unicorn/prefer-modern-dom-apis': 'error',
+			'unicorn/prefer-negative-index': 'error',
+			'unicorn/prefer-number-properties': 'error',
+			'unicorn/prefer-optional-catch-binding': 'error',
+			'unicorn/prefer-prototype-methods': 'error',
+			'unicorn/prefer-query-selector': 'error',
+			'unicorn/prefer-reflect-apply': 'error',
+			'unicorn/prefer-string-slice': 'error',
+			'unicorn/prefer-string-starts-ends-with': 'error',
+			'unicorn/prefer-string-trim-start-end': 'error',
+			'unicorn/prefer-type-error': 'error',
+			'unicorn/throw-new-error': 'error',
 			// 强制类名命名规范为 item-cell 而不是 item--cell 或 item_cell
 			// 'jsdoc/require-jsdoc': ['error', {
 			//   require: {
@@ -184,5 +217,25 @@ export default [
 				}
 			]
 		}
+	},
+	{
+		ignores: [
+			'**/*.sh',
+			'**/node_modules',
+			'**/*.md',
+			'**/*.woff',
+			'**/*.ttf',
+			'**/.vscode',
+			'**/.idea',
+			'**/dist',
+			'public',
+			'docs',
+			'**/.husky',
+			'**/.local',
+			'**/.eslintrc.cjs',
+			'**/.prettierrc.cjs',
+			'**/.stylelintrc.cjs',
+			'bin'
+		]
 	}
 ]
