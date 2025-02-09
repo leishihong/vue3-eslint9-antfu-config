@@ -143,7 +143,7 @@ export default [
 				{
 					cases: {
 						kebabCase: true, // test-home
-						camelCase: false, //test 必须小写
+						camelCase: true, //test 必须小写
 						pascalCase: true, // TestHome
 						snakeCase: false // 小写 test、test_view
 					},
